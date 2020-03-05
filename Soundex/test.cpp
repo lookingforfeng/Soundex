@@ -6,16 +6,14 @@ TEST(TestCaseName, TestName1) {
 }
 
 TEST(TestCaseName, TestName2) {
-    EXPECT_EQ(1, 2);
-    EXPECT_TRUE(true);
+    EXPECT_TRUE(1==1);
 }
 
 TEST(TestCaseName, TestName3) {
-    EXPECT_EQ(1, 2);
-    EXPECT_TRUE(true);
+    EXPECT_FALSE(1!=1);
 }
 
 TEST(TestCaseName, TestName4) {
-    EXPECT_EQ(1, 2);
     EXPECT_TRUE(true);
+    EXPECT_FALSE(false);
 }
