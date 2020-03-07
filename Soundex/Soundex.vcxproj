@@ -33,12 +33,16 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <ItemGroup>
+    <ClCompile Include="Soundex.cpp" />
     <ClCompile Include="test.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Soundex.h" />
   </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

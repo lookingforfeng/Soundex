@@ -1,33 +1,23 @@
 #include "gtest/gtest.h"
-using namespace std;
+#include "Soundex.h"
 
-class Soundex
+using namespace testing;
+
+class SoundexEncoding:public Test
 {
 public:
-	Soundex();
-	~Soundex();
-	string encode(const string& word);
-
+	Soundex _soundex;
 private:
 
 };
 
-Soundex::Soundex()
+TEST_F(SoundexEncoding, changeFisrtLetter) 
 {
+	EXPECT_EQ(_soundex.encode("A"), "A000");
 }
 
-Soundex::~Soundex()
+TEST_F(SoundexEncoding, theEndLaw)
 {
-}
-
-string Soundex::encode(const string& word)
-{
-	return "A";
-}
-
-TEST(SoundexEncoding, changeFisrtLetter) {
-	Soundex my_soundex;
-	auto encoded = my_soundex.encode("A");
-	EXPECT_EQ(encoded, "A");
+	EXPECT_EQ(_soundex.encode("I"), "I000");
 }
 
