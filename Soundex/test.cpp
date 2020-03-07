@@ -1,19 +1,33 @@
 #include "gtest/gtest.h"
+using namespace std;
 
-TEST(TestCaseName, TestName1) {
-  EXPECT_EQ(1, 1);
-  EXPECT_TRUE(true);
+class Soundex
+{
+public:
+	Soundex();
+	~Soundex();
+	string encode(const string& word);
+
+private:
+
+};
+
+Soundex::Soundex()
+{
 }
 
-TEST(TestCaseName, TestName2) {
-    EXPECT_TRUE(1==1);
+Soundex::~Soundex()
+{
 }
 
-TEST(TestCaseName, TestName3) {
-    EXPECT_FALSE(1!=1);
+string Soundex::encode(const string& word)
+{
+	return "A";
 }
 
-TEST(TestCaseName, TestName4) {
-    EXPECT_TRUE(true);
-    EXPECT_FALSE(false);
+TEST(SoundexEncoding, changeFisrtLetter) {
+	Soundex my_soundex;
+	auto encoded = my_soundex.encode("A");
+	EXPECT_EQ(encoded, "A");
 }
+
