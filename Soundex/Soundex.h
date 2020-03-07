@@ -16,6 +16,7 @@ private:
 	string ReplaceNums(const string& word) const;
 	string ReplaceNum(const char&) const;
 	string Tail(const string & )const;
+	bool isComplete(const string& encoding) const;
 };
 
 #endif

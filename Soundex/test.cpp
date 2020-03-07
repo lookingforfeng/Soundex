@@ -33,5 +33,11 @@ TEST_F(SoundexEncoding, replaceMoreNum)
 
 TEST_F(SoundexEncoding, longWord)
 {
-	EXPECT_EQ(_soundex.encode("Dcdlbfdsdf"), "4u");
+	EXPECT_EQ(_soundex.encode("Lxkfasdfasdf"), "L221");
+}
+
+
+TEST_F(SoundexEncoding, yuanyin)
+{
+	EXPECT_EQ(_soundex.encode("Baeiouhycdl"), "B234");
 }

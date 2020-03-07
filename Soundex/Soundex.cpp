@@ -28,6 +28,7 @@ string Soundex::ReplaceNums(const string& word) const
 	string encoding;
 	for (auto letter : word)
 	{
+		if (isComplete(encoding)) break;
 		encoding += ReplaceNum(letter);
 	}
 	return encoding;
@@ -51,4 +52,9 @@ string Soundex::ReplaceNum(const char& letter) const
 string Soundex::Tail(const string& word) const
 {
 	return word.substr(1);
+}
+
+bool Soundex::isComplete(const string & encoding) const
+{
+	return encoding.length() >= (MaxCodeLength - 1);
 }
