@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "Soundex.h"
 
-//#define test
+#define test
 
 #ifndef test
 int main()
@@ -35,37 +35,37 @@ private:
 
 };
 
-TEST_F(SoundexEncoding, changeFisrtLetter)
+TEST_F(SoundexEncoding, set_only_the_first_character)
 {
 	ASSERT_EQ(_soundex.encode("A"), "A000");
 }
 
-TEST_F(SoundexEncoding, replaceLetterWihtNumber)
+TEST_F(SoundexEncoding, replace_letters_other_than_the_first_character_with_numbers)
 {
 	ASSERT_EQ(_soundex.encode("Bk"), "B200");
 }
 
-TEST_F(SoundexEncoding, replaceNosenceWithZero)
+TEST_F(SoundexEncoding, mask_unexpected_characters)
 {
 	ASSERT_EQ(_soundex.encode("B#"), "B000");
 }
 
-TEST_F(SoundexEncoding, replaceMoreNum)
+TEST_F(SoundexEncoding, replace_multiple_characters)
 {
 	ASSERT_EQ(_soundex.encode("Lxdf"), "L231");
 }
 
-TEST_F(SoundexEncoding, longWord)
+TEST_F(SoundexEncoding, when_the_number_of_characters_is_more_than_4)
 {
 	ASSERT_EQ(_soundex.encode("Lxdfasdfasdf"), "L231");
 }
 
-TEST_F(SoundexEncoding, yuanyin)
+TEST_F(SoundexEncoding, shield_middle_vowel)
 {
 	ASSERT_EQ(_soundex.encode("Baeiouhycdl"), "B234");
 }
 
-TEST_F(SoundexEncoding, dealSameNumber)
+TEST_F(SoundexEncoding, the_same_encoding_is_not_repeated)
 {
 	ASSERT_EQ(_soundex.ReplaceNum('b'), _soundex.ReplaceNum('f'));
 	ASSERT_EQ(_soundex.ReplaceNum('c'), _soundex.ReplaceNum('g'));
@@ -73,27 +73,27 @@ TEST_F(SoundexEncoding, dealSameNumber)
 	ASSERT_EQ(_soundex.encode("Abfcgdt"), "A123");
 }
 
-TEST_F(SoundexEncoding, uperClassLetter)
+TEST_F(SoundexEncoding, uppercase_the_first_letter)
 {
 	ASSERT_EQ(_soundex.encode("abcd").substr(0, 1), "A");
 }
 
-TEST_F(SoundexEncoding, more_uperClassLetter)
+TEST_F(SoundexEncoding, allow_uppercase_letters_in_the_middle)
 {
 	ASSERT_EQ(_soundex.encode("BaAeEiIoOuUhHyYcdl"), "B234");
 }
 
-TEST_F(SoundexEncoding, ignoreCase)
+TEST_F(SoundexEncoding, same_case_encoding)
 {
 	ASSERT_EQ(_soundex.encode("BCDL"), _soundex.encode("Bcdl"));
 }
 
-TEST_F(SoundexEncoding, combieDuplicateCodes)
+TEST_F(SoundexEncoding, same_code_merge)
 {
 	ASSERT_EQ(_soundex.encode("Bbcd"), "B230");
 }
 
-TEST_F(SoundexEncoding, slitBySome_yuanyin)
+TEST_F(SoundexEncoding, vowel_isolation_does_not_count)
 {
 	ASSERT_EQ(_soundex.encode("Jbob"), "J110");
 }
